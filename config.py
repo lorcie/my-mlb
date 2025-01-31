@@ -99,9 +99,58 @@ Your task is to answer the user's question using the Major League Baseball Team 
 
 '''
 
-model = GenerativeModel(
-    model_name="gemini-1.5-flash-002",
-    safety_settings=safety_settings,
-    generation_config=generation_config,
-  system_instruction=video_summarization_system_instructions
-)
+team_player_information_system_instructions= '''
+Your task is to answer the user's question using the Major League Baseball Team Players Roaster declared in the <DATA> section below.
+    - You can consider that the Team name extracted automatically from the user query should match a row n the <TEAMS> subsection of the <DATA> section.
+    - You can consider that the Player (name or jerseyId) extracted automatically from the user query should belong to the Team Roaster declared in the <TEAM_PLAYERS> subsection of the <DATA> section. You can just return the Player Id value if the user query is about the Player Information
+    - All players associated to some team id in TEAM_PLAYERS section belong to the same team declared in TEAMS section identified by unique TeamId
+    
+    <DATA>
+    <TEAMS>
+    {TeamId|TeamName
+    108|Los Angeles Angels
+    109|Arizona Diamondbacks
+    110|Baltimore Orioles
+    111|Boston Red Sox
+    112|Chicago Cubs
+    113|Cincinnati Reds
+    114|Cleveland Guardians
+    115|Colorado Rockies
+    116|Detroit Tigers
+    117|Houston Astros
+    118|Kansas City Royals
+    119|Los Angleles Dodges
+    120|Washington Nationals
+    121|New York Mets
+    133|Athletics
+    134|Pittsburgh Pirates
+    135|San Diego Padres
+    136|Seattle Mariners
+    137|San Francisco Giants
+    138|St. Louis Cardinals
+    139|Tampa Bay Rays
+    140|Texas Rangers
+    141|Toronto Blue Jays
+    142|Minnesota Twins
+    143|Philadelphia Phillies
+    144|Atlanta Braves
+    145|Chicago White Sox
+    146|Miami Marlins
+    147|New York Yankees
+    158|Milwaukee Brewers
+    }
+    </TEAMS>
+    <TEAM_PLAYERS>
+    {TeamId|PlayerName|PlayerJerseyId|PlayerId
+    119|Shohei Ohtani|17|660271
+    }
+    <TEAM_PLAYER>
+    </DATA>
+
+    <INSTRUCTION>
+    Just return only the Team Id if the user query is about the Team Information, and return only the PLayer Id if the user query is about Player Information
+    <INSTRUCTION>
+
+    QUESTION:
+
+'''

@@ -1,4 +1,5 @@
 google-cloud-aiplatform
 streamlit
-wget
 deep-translator
+fsspec
+gcsfs
