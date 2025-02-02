@@ -30,8 +30,7 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 
 from config import video_summarization_system_instructions, video_homerun_analysis_system_instructions, team_player_information_system_instructions, safety_settings, generation_config
 
-def video_analysis(url: str):
-    video_homerun_analysis_model = GenerativeModel(model_name="models/"+GEMINI_MODEL, system_instruction=video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
+def video_analysis(video_homerun_analysis_model: GenerativeModel, url: str):
     response = video_homerun_analysis_model.generate_content(
         [
             Part.from_uri(
@@ -168,6 +167,8 @@ def main():
     #st.image("img/logo-lomoai.png", width=64)
     model_function_call = None
     model_team_player_information = None
+    model_video_summarization = None
+    video_homerun_analysis_model = None
 
     st.title(lang_dict['title']) #'MyMLB AI Bot on Google Gemini')
     init_prompt = st.selectbox(
@@ -181,15 +182,13 @@ def main():
     )
 
     if init_prompt.find("ideo") != -1 or init_prompt.find("ビデオ") != -1:
-        model_video_summarization = GenerativeModel(
-            model_name=GEMINI_MODEL,
-            safety_settings=safety_settings,
-            generation_config=generation_config,
-            system_instruction=video_summarization_system_instructions
-        )
-
-        with st.expander(lang_dict['summarizeVideoInstructions']): #"view Video Summarization System Intructions"):
-            st.write(video_summarization_system_instructions)
+        if (model_video_summarization == None):
+            model_video_summarization = GenerativeModel(
+                model_name=GEMINI_MODEL,
+                safety_settings=safety_settings,
+                generation_config=generation_config,
+                system_instruction=video_summarization_system_instructions
+            )
         
         #st.image("img/logo-lomoai.png", width=96)
 
@@ -218,13 +217,15 @@ def main():
                 print(li)
                 #li.insert(0,lang_dict['placeHolderPrompt'])
                 if li is not None:
-                    with st.expander(lang_dict['analyzeVideoInstructions']):
-                        st.write(video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
+#                    with st.expander(lang_dict['analyzeVideoInstructions']):
+#                        st.write(video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
 
                     video_url_input=st.selectbox(lang_dict['analyseVideo'], li, placeholder=lang_dict['placeHolderAnalyseVideo'])
                     if video_url_input.startswith("https://"):
+                        if (video_homerun_analysis_model == None):
+                            video_homerun_analysis_model = GenerativeModel(model_name="models/"+GEMINI_MODEL, system_instruction=video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
                         st.video(video_url_input)
-                        video_details=video_analysis(video_url_input)
+                        video_details=video_analysis(video_homerun_analysis_model, video_url_input)
                         if video_details is not None:
                             print(video_details)
                             translated_video_details = deep_translate(video_details, 'en', lang_options[locale].split("_")[0])
