@@ -10,13 +10,15 @@
 
 ![Solution Principles](./assets/mymlb-solution-principles.png)
 
-The application has been developed/deployed/tested using various **Google Cloud** Technologies ( **Cloud Run** , **Cloud Storage**,..) enabling **serverless** strategy through Cloud Shell (Terminal/Command Line or Editor)
+- The application has been developed/deployed/tested using various **Google Cloud** Technologies ( **Cloud Run** , **Cloud Storage**,..) enabling **serverless** strategy through Cloud Shell (Terminal/Command Line or Editor)
 
-The application has been designed to externalize the Data (MLB Homerun and Translations in csv format) outside of the Code Repository to make easy and flexible their evolutions in the future.
+- The application has been designed to **externalize** the Data (MLB Homerun and Translations in csv format) outside of the Code Repository to make easy and flexible their evolutions in the future.
 
-The various Gemini models are created based on Singleton Entity Pattern to get better performance
+- The various Gemini models associated either with **custom prompt instructions** either **function calling tools** heve been created based on **Singleton Entity Pattern** to get better performance
 
-**Team Player Roaster Relation Metadata**  and **Gemini Model** are also defined as environment variable to enable potential future evolution outside of the code repo, hence its future modification can be integrated without cloud build submission command
+- **Team Player Roaster Relation Metadata**  dynamically integrated in one of LLM custom system instruction have been defined as environment variable to enable potential future evolution outside of the code repo, hence its future modification can be integrated without cloud build submission command
+
+- **Gemini Model** environment variable enables easy switch from **gemini-1.5-flash-002** into **gemini-2.0-flash-exp** , and also integration of other model version in the future
 
 # MyMLB Local Review
 
