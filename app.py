@@ -1,5 +1,3 @@
-
-
 import os
 import streamlit as st
 import requests
@@ -7,7 +5,7 @@ import json
 import time
 import pandas as pd
 from deep_translator import GoogleTranslator
-
+import traceback
 import vertexai
 
 from vertexai.generative_models import (
@@ -25,6 +23,7 @@ LOCATION = os.environ.get("GCP_REGION")
 HOMERUN_PATHNAME = os.environ.get("GCS_HOMERUN")
 TEXT_BUNDLE_PATHNAME=os.environ.get("GCS_TEXT_BUNDLE")
 TEAM_PLAYERS_ROASTER_PATHNAME=os.environ.get("GCS_TEAM_PLAYERS_ROASTER")
+TEAM_PLAYER_ROASTER_RELATION=os.environ.get("TEAM_PLAYER_ROASTER_RELATION")
 
 # Initialize Vertex AI
 vertexai.init(project=PROJECT_ID, location=LOCATION)
@@ -32,7 +31,7 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 from config import video_summarization_system_instructions, video_homerun_analysis_system_instructions, team_player_information_system_instructions, safety_settings, generation_config
 
 def video_analysis(url: str):
-    video_homerun_analysis_model = GenerativeModel(model_name="models/"+GEMINI_MODEL, system_instruction=video_homerun_analysis_system_instructions)
+    video_homerun_analysis_model = GenerativeModel(model_name="models/"+GEMINI_MODEL, system_instruction=video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
     response = video_homerun_analysis_model.generate_content(
         [
             Part.from_uri(
@@ -115,6 +114,7 @@ def deep_translate(input_text: str, src_language: str, target_language: str):
     try:
         output_text=GoogleTranslator(source=src_language, target=target_language).translate(input_text)
     except:
+        traceback.print_exc()
         output_text = input_text 
     return output_text
 
@@ -180,7 +180,7 @@ def main():
      ]
     )
 
-    if init_prompt.find("ideo") != -1:
+    if init_prompt.find("ideo") != -1 or init_prompt.find("ビデオ") != -1:
         model_video_summarization = GenerativeModel(
             model_name=GEMINI_MODEL,
             safety_settings=safety_settings,
@@ -219,7 +219,7 @@ def main():
                 #li.insert(0,lang_dict['placeHolderPrompt'])
                 if li is not None:
                     with st.expander(lang_dict['analyzeVideoInstructions']):
-                        st.write(video_homerun_analysis_system_instructions)
+                        st.write(video_homerun_analysis_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION))
 
                     video_url_input=st.selectbox(lang_dict['analyseVideo'], li, placeholder=lang_dict['placeHolderAnalyseVideo'])
                     if video_url_input.startswith("https://"):
@@ -237,7 +237,7 @@ def main():
                 model_name=GEMINI_MODEL,
                 safety_settings=safety_settings,
                 generation_config=generation_config,
-                system_instruction=team_player_information_system_instructions
+                system_instruction=team_player_information_system_instructions.format(TeamPlayerRoasterRelation=TEAM_PLAYER_ROASTER_RELATION)
             )
             team_player_chat_session = model_team_player_information.start_chat()
             #    history=[

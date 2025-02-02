@@ -1,0 +1,127 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 507.0.0
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    run.googleapis.com/operation-id: e2014b7e-0133-41b3-a40b-052a51df1545
+    run.googleapis.com/urls: '["https://my-mlb-app-1029043021255.us-central1.run.app","https://my-mlb-app-fcup4vmnaa-uc.a.run.app"]'
+    serving.knative.dev/creator: adrienchan94@gmail.com
+    serving.knative.dev/lastModifier: adrienchan94@gmail.com
+  creationTimestamp: '2025-01-26T19:02:17.469154Z'
+  generation: 5
+  labels:
+    cloud.googleapis.com/location: us-central1
+  name: my-mlb-app
+  namespace: '1029043021255'
+  resourceVersion: AAYtI2g2tfY
+  selfLink: /apis/serving.knative.dev/v1/namespaces/1029043021255/services/my-mlb-app
+  uid: 1e01a0c5-244e-4e08-a377-72c69d1b407c
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '3'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 507.0.0
+        run.googleapis.com/startup-cpu-boost: 'true'
+      labels:
+        client.knative.dev/nonce: ibqjggbdmw
+        run.googleapis.com/startupProbeType: Default
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: GCP_PROJECT
+          value: mymlb-448914
+        - name: GCP_REGION
+          value: us-central1
+        - name: GCS_HOMERUN
+          value: gs://my-mlb-cloud-storage/2024-mlb-homeruns-sample.csv
+        - name: GCS_TEXT_BUNDLE
+          value: gs://my-mlb-cloud-storage/text_bundle.csv
+        - name: GEMINI_MODEL
+          value: gemini-2.0-flash-exp
+        - name: TEAM_PLAYER_ROASTER_RELATION
+          value: |2-
+                <TEAMS>
+                {TeamId|TeamName
+                108|Los Angeles Angels
+                109|Arizona Diamondbacks
+                110|Baltimore Orioles
+                111|Boston Red Sox
+                112|Chicago Cubs
+                113|Cincinnati Reds
+                114|Cleveland Guardians
+                115|Colorado Rockies
+                116|Detroit Tigers
+                117|Houston Astros
+                118|Kansas City Royals
+                119|Los Angleles Dodges
+                120|Washington Nationals
+                121|New York Mets
+                133|Athletics
+                134|Pittsburgh Pirates
+                135|San Diego Padres
+                136|Seattle Mariners
+                137|San Francisco Giants
+                138|St. Louis Cardinals
+                139|Tampa Bay Rays
+                140|Texas Rangers
+                141|Toronto Blue Jays
+                142|Minnesota Twins
+                143|Philadelphia Phillies
+                144|Atlanta Braves
+                145|Chicago White Sox
+                146|Miami Marlins
+                147|New York Yankees
+                158|Milwaukee Brewers
+                }
+                </TEAMS>
+                <TEAM_PLAYERS>
+                {TeamId|PlayerName|PlayerJerseyId|PlayerId
+                119|Shohei Ohtani|17|660271
+                }
+                <TEAM_PLAYER>
+        image: us-central1-docker.pkg.dev/mymlb-448914/my-mlb-ar-repo/my-mlb-app
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 240
+      serviceAccountName: 1029043021255-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+status:
+  address:
+    url: https://my-mlb-app-fcup4vmnaa-uc.a.run.app
+  conditions:
+  - lastTransitionTime: '2025-02-02T07:05:55.785206Z'
+    status: 'True'
+    type: Ready
+  - lastTransitionTime: '2025-02-02T07:05:55.491248Z'
+    status: 'True'
+    type: ConfigurationsReady
+  - lastTransitionTime: '2025-02-02T07:05:55.757902Z'
+    status: 'True'
+    type: RoutesReady
+  latestCreatedRevisionName: my-mlb-app-00005-8bx
+  latestReadyRevisionName: my-mlb-app-00005-8bx
+  observedGeneration: 5
+  traffic:
+  - latestRevision: true
+    percent: 100
+    revisionName: my-mlb-app-00005-8bx
+  url: https://my-mlb-app-fcup4vmnaa-uc.a.run.app
