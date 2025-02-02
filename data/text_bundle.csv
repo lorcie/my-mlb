@@ -1,0 +1,43 @@
+locale,key,value
+en_US,greeting,"Hello, World"
+ja_JP,greeting,こんにちは世界
+es_SP,greeting,"Ola"
+en_US,title,"MyMLB AI Bot on Google Gemini"
+ja_JP,title,上の ボット
+es_SP,title,"MyMLB AI Bot en Google Gemini"
+en_US,initPrompt,"You might want to try these prompts..."
+ja_JP,initPrompt,これらのプロンプトを試してみるとよいでしょう...
+es_SP,initPrompt,"Quizás quieras probar estas indicaciones..."
+en_US,placeHolderPrompt,"<Click me to expand>"
+ja_JP,placeHolderPrompt,<クリックして展開してください>
+es_SP,placeHolderPrompt,"<Haz clic en mí para expandir>"
+en_US,optionOne,"Get Team Information about Los Angeles Dodgers"
+ja_JP,optionOne,ロサンゼルス・ドジャースのチーム情報を入手する
+es_SP,optionOne,"Obtenga información del equipo sobre Los Angeles Dodgers"
+en_US,optionTwo,"Get Player Information about Shohei Ohtani"
+ja_JP,optionTwo,大谷翔平に関する選手情報を取得する
+es_SP,optionTwo,"Obtener información de jugador sobre Shohei Ohtani"
+en_US,optionThree,"Summarize Homerun Video"
+ja_JP,optionThree,ビデオの要約
+es_SP,optionThree,"Resumir video de jonrón"
+en_US,header,"Major League Baseball Homerun Data csv file"
+ja_JP,header,メジャーリーグベースボールホームランデータcsvファイル
+es_SP,header,"Archivo csv de datos de jonrones de las Grandes Ligas de Béisbol"
+en_US,placeHolderHeader,"upload your csv file"
+ja_JP,placeHolderHeader,CSV ファイルをアップロードする
+es_SP,placeHolderHeader,"sube tu archivo csv"
+en_US,yourQuestions,"Your questions:"
+ja_JP,yourQuestions,あなたの質問:
+es_SP,yourQuestions,"Tus preguntas:"
+en_US,summarizeVideoInstructions,"view Video Summarization System Intructions"
+ja_JP,summarizeVideoInstructions,ビデオ要約システムの説明を見る
+es_SP,summarizeVideoInstructions,"ver instrucciones del sistema de resumen en video"
+en_US,analyzeVideoInstructions,"view Video Homerun Analysis System Instructions"
+ja_JP,analyzeVideoInstructions,ホームラン分析システムのビデオを見る
+es_SP,analyzeVideoInstructions,"ver instrucciones del sistema de análisis de jonrones en vídeo"
+en_US,analyseVideo,"select one video clip for analysis"
+ja_JP,analyseVideo,分析するビデオ クリップを 1 つ選択します
+es_SP,analyseVideo,"seleccione un videoclip para analizarlo"
+en_US,placeHolderAnalyseVideo,"select one video clip..."
+ja_JP,placeHolderAnalyseVideo,ビデオ クリップを 1 つ選択します...
+es_SP,placeHolderAnalyseVideo,"seleccione un videoclip..."
