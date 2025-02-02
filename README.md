@@ -1,10 +1,16 @@
-# MyMLB Chatbot application based on **Google Cloud** Technologies : **Google Vertex AI**, **Cloud Run**, **Cloud Storage** to leverage **Major League Baseball** Data
+# MyMLB Chatbot application based on **Google Cloud** Technologies : **Google Gemini Vertex AI**, **Cloud Run**, **Cloud Storage** to leverage **Major League Baseball** Data
 
 |           |                                                |
 | --------- | ---------------------------------------------- |
 | Author(s) | [Adrien Chan](https://github.com/lorcie) |
 
-**MyMLB Project** is a Chatbot developed in **Python** with **Google Cloud** Technologies : **Google Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the [Streamlit](https://streamlit.io/) framework to leverage **Major League Baseball** Data (Team, Player, Homerun);
+**MyMLB Project** is a Chatbot developed in **Python** and **GenerativeAI Custom Instructions** with **Google Cloud** Technologies : **Google Gemini Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the [Streamlit](https://streamlit.io/) framework to leverage **Major League Baseball** Data (Team, Player, Homerun);
+
+# MyMLB Solution Principles
+
+![Solution Principles](./assets/mymlb-solution-principles.png)
+
+# MyMLB Local Review
 
 ### Clone MyMLB Repository 
 Clone the repository about MyMlb application and Go inside the working Directory locally.
@@ -43,9 +49,9 @@ export GCP_PROJECT='<Your GCP Project Id>'  # Replace with your project ID
 
 export GCP_REGION='us-central1'             # Modify if needed
 
-export GCS_HOMERUN=gs://my-mlb-cloud-storage/2024-mlb-homeruns-sample.csv
+export GCS_HOMERUN=gs://<Your_GCS_Id>/2024-mlb-homeruns-sample.csv
 
-export GCS_TEXT_BUNDLE=gs://my-mlb-cloud-storage/text_bundle.csv
+export GCS_TEXT_BUNDLE=gs://<Your_GCS_Id>/text_bundle.csv
 
 export TEAM_PLAYER_ROASTER_RELATION=`cat TeamPlayerRoasterRelation.data`
 
@@ -79,9 +85,9 @@ export GCP_PROJECT='<Your GCP Project Id>'  # Replace with your project ID
 
 export GCP_REGION='us-central1'             # Modify if needed
 
-export GCS_HOMERUN=gs://my-mlb-cloud-storage/2024-mlb-homeruns-sample.csv
+export GCS_HOMERUN=gs://<Your_GCS_Id>/2024-mlb-homeruns-sample.csv
 
-export GCS_TEXT_BUNDLE=gs://my-mlb-cloud-storage/text_bundle.csv
+export GCS_TEXT_BUNDLE=gs://<Your_GCS_Id>/text_bundle.csv
 
 export TEAM_PLAYER_ROASTER_RELATION=`cat TeamPlayerRoasterRelation.data`
 
@@ -127,7 +133,49 @@ gcloud run deploy "$SERVICE_NAME" \
 
 ```
 
-# Cloud Run Command
+# MyMLB Assets
+
+MyMLB on Google Cloud Run >
+
+![Google Cloud Run](./assets/mymlb-cloud-run.png)
+
+MyMLB on Google Cloud Shell >
+
+![Google Cloud Shell](./assets/mymlb-cloud-shell.png)
+
+MyMLB on Google Cloud Shell Editor >
+
+![Google Cloud Shell Editor](./assets/mymlb-cloud-shell-editor.png)
+
+MyMLB on Google Cloud Storage >
+
+![Google Cloud Storage](./assets/mymlb-cloud-storage.png)
+
+MyMLB Welcome in English >
+
+![Welcome in english]( ./assets/mymlb-welcome-english.png)
+
+MyMLB Welcome in Japanese >
+
+![Welcome in japanese](./assets/mymlb-welcome-japanese.png)
+
+MyMLB Welcome in Spanish >
+
+![welcome in spanish](./assets/mymlb-welcome-spanish.png)
+
+MyMLB Homerun Video Summarize in English >
+
+![homerun-video-summarize-english](./assets/mymlb-homerun-video-summarize-english.png)
+
+MyMLB Homerun Video Summarize in Japanese >
+
+![homerun-video-summarize-japanese](./assets/mymlb-homerun-video-summarize-japanese.png)
+
+MyMLB Homerun Video Summarize in Spanish >
+
+![homerun-video-summarize-spanish](./assets/mymlb-homerun-video-summarize-spanish.png)
+
+# MyMLB Cloud Run public Command
 
 For my project , the Cloud Run generated command for my environment has been following url:
 https://my-mlb-app-1029043021255.us-central1.run.app
