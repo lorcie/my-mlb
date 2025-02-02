@@ -1,4 +1,7 @@
 # MyMLB Application
+
+[ Google Cloud Run Hosted Project url: https://my-mlb-app-1029043021255.us-central1.run.app ] ( https://my-mlb-app-1029043021255.us-central1.run.app ) 
+
 |           |                                                |
 | --------- | ---------------------------------------------- |
 | Author(s) | [Adrien Chan](https://github.com/lorcie) |
@@ -194,7 +197,7 @@ MyMLB Homerun Video Summarize in Spanish >
 
 # MyMLB Cloud Run public Command
 
-For my project , the Cloud Run generated command for my environment has been following url:
+The Cloud Run delivered using my Google Project credentials is accessible through following url:
 https://my-mlb-app-1029043021255.us-central1.run.app
 
 Upon successful deployment, access the provided clound run specific URL (available at end of logs) to explore the newly deployed Cloud Run application. Congratulations!
