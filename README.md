@@ -4,11 +4,17 @@
 | --------- | ---------------------------------------------- |
 | Author(s) | [Adrien Chan](https://github.com/lorcie) |
 
-**MyMLB Project** is a Chatbot developed in **Python** and **GenerativeAI Custom Instructions** with **Google Cloud** Technologies : **Google Gemini Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the [Streamlit](https://streamlit.io/) framework to leverage **Major League Baseball** Data (Team, Player, Homerun);
+**MyMLB Project** is a Chatbot developed in **Python** and **GenerativeAI Custom Instructions** with **Google Cloud** Technologies : **Google Gemini Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the [Streamlit](https://streamlit.io/) framework to leverage **Major League Baseball** Data (Team, Player, Homerun).
 
 # MyMLB Solution Principles
 
 ![Solution Principles](./assets/mymlb-solution-principles.png)
+
+The application has been developed/deployed/tested using Google Cloud enabling serverless strategy through Cloud Shell (Terminal or Editor)
+
+The application has been designed to externalize the Data (MLB Homerun and Translations in csv format) outside of the Code Repository to make easy and flexible their evolutions in the future.
+
+Team Player Roaster Relation Metadata are also defined as environment variable to enable potential future evolution outside of the code repo, hence its future modification can be integrated without cloud build submission command
 
 # MyMLB Local Review
 
@@ -18,7 +24,7 @@ Clone the repository about MyMlb application and Go inside the working Directory
 ### Store Data csv files in some Google Cloud Storage
 Before building and deploying the cloned application, you have to create a **Google Cloud Storage** Bucket and upload the following csv files availablke in subdirectory data :
 
-- 2024-mlb-homeruns.csv : extract of 2024 MLB Homerun dataset
+- 2024-mlb-homeruns-sample.csv : extract of 2024 MLB Homerun dataset
 
 - text_bundle.csv : Dictionary of Translations into spanish, japanese internaional languages
 
