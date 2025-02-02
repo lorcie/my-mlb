@@ -1,12 +1,19 @@
-# MyMLB Chatbot application based on **Google Cloud** Technologies : **Google Gemini Vertex AI**, **Cloud Run**, **Cloud Storage** to leverage **Major League Baseball** Data
-
+# MyMLB Application
 |           |                                                |
 | --------- | ---------------------------------------------- |
 | Author(s) | [Adrien Chan](https://github.com/lorcie) |
 
-**MyMLB Project** is a Chatbot developed in **Python** and **GenerativeAI Custom Instructions** with **Google Cloud** Technologies : **Google Gemini Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the [Streamlit](https://streamlit.io/) framework to leverage **Major League Baseball** Data (Team, Player, Homerun).
+# Table of contents
+1. [Introduction](#introduction)
+2. [Solution Principles](#solution-principles)
+3. [Local Development and Review ](#development-review)
+6. [Screenshots](#assets)
 
-# MyMLB Solution Principles
+# Introduction <a name="introduction"></a>
+
+[MyMLB]( https://my-mlb-app-1029043021255.us-central1.run.app ) is a Chatbot developed in **Python** and **GenerativeAI Custom Instructions** with **Google Cloud** Technologies : **Google Gemini Vertex AI** Generative LLM, hosting with **Google Cloud Run**, storing with **Google Cloud Storage**, online developer IDE **Google Cloud Shell**,  and uses also the Streamlit framework to leverage **Major League Baseball** Data (Team, Player, Homerun) and its API.
+
+# MyMLB Solution Principles <a name="solution-principles"></a>
 
 ![Solution Principles](./assets/mymlb-solution-principles.png)
 
@@ -20,7 +27,7 @@
 
 - **Gemini Model** environment variable enables easy switch from **gemini-1.5-flash-002** into **gemini-2.0-flash-exp** , and also integration of other model version in the future
 
-# MyMLB Local Review
+# MyMLB Local Review <a name="development-review"></a>
 
 ### Clone MyMLB Repository 
 Clone the repository about MyMlb application and Go inside the working Directory locally.
@@ -143,7 +150,7 @@ gcloud run deploy "$SERVICE_NAME" \
 
 ```
 
-# MyMLB Assets
+# MyMLB Screenshots <a name="assets"></a>
 
 MyMLB on Google Cloud Run >
 
