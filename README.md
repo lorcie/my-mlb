@@ -30,6 +30,8 @@
 
 - **Gemini Model** environment variable enables easy switch from **gemini-1.5-flash-002** into **gemini-2.0-flash-exp** , and also integration of other model version in the future
 
+- a special **Custom Instruction for Entity resolution** is used to get the Team/Player appropriate Id from user request expressed in natural language, to enable appropriate function calling with either team either player id required by MLB API.
+
 # MyMLB Local Review <a name="development-review"></a>
 
 ### Clone MyMLB Repository 
