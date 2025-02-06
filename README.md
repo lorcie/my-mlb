@@ -111,6 +111,9 @@ export GCS_HOMERUN=gs://<Your_GCS_Id>/2024-mlb-homeruns-sample.csv
 
 export GCS_TEXT_BUNDLE=gs://<Your_GCS_Id>/text_bundle.csv
 
+export GEMINI_MODEL=gemini-2.0-flash-exp
+# set GEMINI_MODEL=gemini-2.0-flash-001 to test the latest Generally Available gemini 2.0
+
 export TEAM_PLAYER_ROASTER_RELATION=`cat TeamPlayerRoasterRelation.data`
 
 ```
@@ -160,6 +163,10 @@ gcloud run deploy "$SERVICE_NAME" \
 MyMLB on Google Cloud Run >
 
 ![Google Cloud Run](./assets/mymlb-cloud-run.png)
+
+MyMLB on Google Cloud Run with latest (2025-02-05) Generally Available Gemini 2.0 >
+
+![Google Cloud Run](./assets/mymlb-cloud-run-gemini-2-0-flash-001.png)
 
 MyMLB on Google Cloud Shell >
 
